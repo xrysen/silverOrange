@@ -15,7 +15,7 @@ export default function FullPost(props) {
         <ReactMarkdown>{props.body}</ReactMarkdown>
         <br />
         <footer style={{ textAlign: 'center' }}>
-          <button onClick={props.close}>Close</button>
+          <button className = "btn" onClick={props.close}>Close</button>
         </footer>
       </div>
     </div>

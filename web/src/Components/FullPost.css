@@ -18,3 +18,19 @@
   border-radius: 10px;
   width: 50%;
 }
+
+.btn {
+  background: #9590A8;
+  border-radius: 28px;
+  border: 1px solid #18020C;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+}
+
+.btn:hover {
+  background: #634B66;
+  cursor: pointer;
+  transition: color, 0.2s;
+}
