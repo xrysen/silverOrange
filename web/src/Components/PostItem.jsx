@@ -5,7 +5,7 @@ export default function PostItem(props) {
     <tr>
       <td>{props.title}</td>
       <td>{props.author}</td>
-      <td><ReactMarkdown>{props.summary.substring(40,60) + "..."}</ReactMarkdown></td>
+      <td><ReactMarkdown>{props.summary.replace(/#/g, '').replace(/\n/g, '').substring(0, 60) + "..."}</ReactMarkdown></td>
       <td>{new Date(props.date).toISOString().substring(0, 10)}</td>
     </tr>
   );
