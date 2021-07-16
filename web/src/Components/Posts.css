@@ -2,8 +2,9 @@
   width: 50%;
   background-color: #BBCBCB;
   border-radius: 10px;
-  margin: auto auto;
   padding: 10px;
+  margin-top: 10%;
+  overflow-x: auto;
 }
 
 .post-table {
@@ -11,8 +12,12 @@
   width: 100%;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   display: table;
-  @media screen and (max-width: 580px)
+}
+
+@media screen and (max-width: 580px) {
+  .post-table {
     display: block;
+  }
 }
 
 .post-header {
