@@ -19,3 +19,7 @@
   background-color: #9590A8;
   color: white;
 }
+
+.author-filter:hover {
+  cursor: pointer;
+}

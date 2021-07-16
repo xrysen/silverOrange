@@ -26,13 +26,23 @@ export default function Posts() {
       });
   }, []);
 
+  function sortByAuthor () {
+      const tempPosts = [...posts];
+      tempPosts.sort(function (a, b) {
+        if (a.author.name < b.author.name) { return -1; }
+        if (a.author.name > b.author.name) { return 1; }
+        return 0;
+      })
+      setPosts(tempPosts);
+  }
+
   return (
     <div className="posts-container">
       <h3>Latest Posts</h3>
       <table className = "post-table">
         <thead className = "post-header">
           <th>Title</th>
-          <th>Author</th>
+          <th onClick = {()=> sortByAuthor()} className = "author-filter">Author</th>
           <th>Summary</th>
           <th>Published On</th>
         </thead>
