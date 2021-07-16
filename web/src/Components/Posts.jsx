@@ -8,6 +8,7 @@ export default function Posts() {
   const [posts, setPosts] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [postOpen, setPostOpen] = useState(false);
+  const [error, setError] = useState(false);
   const [singlePost, setSinglePost] = useState({
     title: '',
     author: '',
@@ -33,6 +34,10 @@ export default function Posts() {
             );
           })
         );
+        setIsLoaded(true);
+      })
+      .catch(() => {
+        setError(true);
         setIsLoaded(true);
       });
   }, []);
@@ -64,6 +69,15 @@ export default function Posts() {
     return (
       <div className="posts-container">
         <Loader />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="posts-container">
+        <h3>An error has occured. Please try refreshing your browser</h3>
+        <h4>If this error continues, please contact your system administrator</h4>
       </div>
     );
   }
