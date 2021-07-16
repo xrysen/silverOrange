@@ -14,7 +14,12 @@ export default function Posts() {
       },
     })
       .then((res) => res.json())
-      .then((res) => setPosts(res));
+      .then((res) => {
+
+        setPosts(res.sort(function(a, b) {
+          return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
+        }))
+      });
   }, []);
 
   return (
