@@ -5,3 +5,17 @@
   margin: auto auto;
   padding: 10px;
 }
+
+.post-table {
+  margin: 0 0 40px 0;
+  width: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  display: table;
+  @media screen and (max-width: 580px)
+    display: block;
+}
+
+.post-header {
+  background-color: #9590A8;
+  color: white;
+}
