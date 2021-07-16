@@ -2,15 +2,17 @@ import { useState, useEffect } from 'react';
 import PostItem from './PostItem';
 import './Posts.css';
 import FullPost from './FullPost';
+import Loader from './Loader';
 
 export default function Posts() {
   const [posts, setPosts] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
   const [postOpen, setPostOpen] = useState(false);
   const [singlePost, setSinglePost] = useState({
-    title: "",
-    author: "",
-    body: "",
-    date: ""
+    title: '',
+    author: '',
+    body: '',
+    date: '',
   });
 
   useEffect(() => {
@@ -31,11 +33,12 @@ export default function Posts() {
             );
           })
         );
+        setIsLoaded(true);
       });
   }, []);
 
   function handleTitleClick(title, author, body, date) {
-    setSinglePost({title, author, body, date})
+    setSinglePost({ title, author, body, date });
     setPostOpen(true);
   }
 
@@ -57,6 +60,14 @@ export default function Posts() {
     setPosts(tempPosts);
   }
 
+  if (!isLoaded) {
+    return (
+      <div className="posts-container">
+        <Loader />
+      </div>
+    );
+  }
+
   return (
     <div className="posts-container">
       <h3>Latest Posts</h3>
@@ -76,7 +87,14 @@ export default function Posts() {
             return (
               <PostItem
                 key={post.id}
-                onClick = {()=> handleTitleClick(post.title, post.author.name, post.body, post.publishedAt)}
+                onClick={() =>
+                  handleTitleClick(
+                    post.title,
+                    post.author.name,
+                    post.body,
+                    post.publishedAt
+                  )
+                }
                 title={post.title}
                 summary={post.body}
                 author={post.author.name}
@@ -86,7 +104,15 @@ export default function Posts() {
           })}
         </tbody>
       </table>
-      {postOpen ? <FullPost close = {closePost} title = {singlePost.title} author = {singlePost.author} body = {singlePost.body} date = {singlePost.date} /> : null}
+      {postOpen ? (
+        <FullPost
+          close={closePost}
+          title={singlePost.title}
+          author={singlePost.author}
+          body={singlePost.body}
+          date={singlePost.date}
+        />
+      ) : null}
     </div>
   );
 }
