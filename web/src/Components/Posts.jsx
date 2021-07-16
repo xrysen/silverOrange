@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import "./Posts.css";
+import PostItem from './PostItem';
+import './Posts.css';
 
 export default function Posts() {
   const [posts, setPosts] = useState([]);
@@ -17,10 +18,18 @@ export default function Posts() {
   }, []);
 
   return (
-    <div className = "posts-container">
+    <div className="posts-container">
       <h3>Latest Posts</h3>
       {posts.map((post) => {
-        return <p key={post.id}>{post.title}</p>;
+        return (
+          <PostItem
+            key={post.id}
+            title={post.title}
+            summary={post.body}
+            author={post.author.name}
+            date={post.publishedAt}
+          />
+        );
       })}
     </div>
   );
