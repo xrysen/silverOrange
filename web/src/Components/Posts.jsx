@@ -6,6 +6,12 @@ import FullPost from './FullPost';
 export default function Posts() {
   const [posts, setPosts] = useState([]);
   const [postOpen, setPostOpen] = useState(false);
+  const [singlePost, setSinglePost] = useState({
+    title: "",
+    author: "",
+    body: "",
+    date: ""
+  });
 
   useEffect(() => {
     fetch('http://localhost:4000/posts', {
@@ -28,8 +34,13 @@ export default function Posts() {
       });
   }, []);
 
-  function handleTitleClick() {
+  function handleTitleClick(title, author, body, date) {
+    setSinglePost({title, author, body, date})
     setPostOpen(true);
+  }
+
+  function closePost() {
+    setPostOpen(false);
   }
 
   function sortByAuthor() {
@@ -65,7 +76,7 @@ export default function Posts() {
             return (
               <PostItem
                 key={post.id}
-                onClick = {()=> handleTitleClick()}
+                onClick = {()=> handleTitleClick(post.title, post.author.name, post.body, post.publishedAt)}
                 title={post.title}
                 summary={post.body}
                 author={post.author.name}
@@ -75,7 +86,7 @@ export default function Posts() {
           })}
         </tbody>
       </table>
-      {postOpen ? <FullPost /> : null}
+      {postOpen ? <FullPost close = {closePost} title = {singlePost.title} author = {singlePost.author} body = {singlePost.body} date = {singlePost.date} /> : null}
     </div>
   );
 }

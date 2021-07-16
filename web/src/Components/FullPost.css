@@ -9,3 +9,12 @@
   background-color: rgb(0,0,0);
   background-color: rgba(0,0,0,0.5);
 }
+
+.fullpost-content {
+  background-color: white;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 10px;
+  width: 50%;
+}
