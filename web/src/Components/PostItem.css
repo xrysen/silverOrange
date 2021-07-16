@@ -1,0 +1,6 @@
+.post-title:hover {
+  cursor: pointer;
+  color: white;
+  background-color: #634B66;
+  transition: background-color, 0.5s;
+}
