@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders a table for posts and authors 1`] = `
+<tr>
+  <td
+    className="post-title"
+  >
+    My Post
+  </td>
+  <td>
+    Alice Bob
+  </td>
+  <td>
+    This a test summary that is more than 60 characters long by ...
+  </td>
+  <td>
+    2021-07-16
+  </td>
+</tr>
+`;

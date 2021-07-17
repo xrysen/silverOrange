@@ -90,7 +90,7 @@ export default function Posts() {
           <tr>
             <th>Title</th>
             <th onClick={() => sortByAuthor()} className="author-filter">
-              Author
+              Author ▼
             </th>
             <th>Summary</th>
             <th>Published On</th>
